@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:jee="http://www.springframework.org/schema/jee"
+             xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+    <http pattern="/resources/**" security="none" />
+
+    <http auto-config='true' >
+        <intercept-url pattern="/" access="permitAll"/>
+        <intercept-url pattern="/login/**" access="permitAll" />
+        <intercept-url pattern="/favicon.ico" access="permitAll"/>
+        <intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
+        <!--<intercept-url pattern="/login_duplicate" access="permitAll" />-->
+        <form-login login-page="/login/loginCheck.do"
+                    username-parameter="id"
+                    password-parameter="pw"
+
+                    login-processing-url="/login/loginProcess"
+                    authentication-failure-url="/login/login.do?fail=true"
+
+                    default-target-url="/login/login_success"
+                    always-use-default-target='true'
+        />
+
+        <access-denied-handler error-page="/login/login.do?fail=true" />
+
+        <session-management>
+            <concurrency-control max-sessions="1" expired-url="/login_duplicate"/>
+        </session-management>
+    </http>
+
+    <beans:bean id="userService" class="org.springframework.source.customAuthentication.UserService" />
+
+    <beans:bean id="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+
+    <authentication-manager>
+        <authentication-provider user-service-ref="userService">
+            <password-encoder ref="bcryptEncoder"/>
+        </authentication-provider>
+    </authentication-manager>
+
+</beans:beans>

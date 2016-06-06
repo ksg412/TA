@@ -9,7 +9,9 @@
 
 	<!-- Maps '/' requests to the 'home' view -->
 	<mvc:view-controller path="/" view-name="jsp/home"/>
-	
+
 	<context:component-scan base-package="org.springframework.samples.mvc" />
+
+	<context:component-scan base-package="org.springframework.source" />
 	 
 </beans>

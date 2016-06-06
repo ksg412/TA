@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "HTTP://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+		<setting name="cacheEnabled" value="true" />
+		<setting name="useGeneratedKeys" value="true" />
+		<setting name="defaultExecutorType" value="REUSE" />
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+
+	<typeAliases>
+		<typeAlias alias="loginVo" type="org.springframework.source.login.LoginVo"/>
+		<!--<typeAlias alias="mainVo" type="com.easysport.b40.main.vo.MainVo" />-->
+		<!--<typeAlias alias="memberVo" type="com.easysport.b40.member.vo.MemberVo" />-->
+		<!--<typeAlias alias="userInfoVo" type="com.easysport.b40.userInfo.vo.UserInfoVo" />-->
+		<!--<typeAlias alias="setupVo" type="com.easysport.b40.setup.vo.SetupVo" />-->
+	</typeAliases>
+
+	<!--datasource-context.xml에 mapperLocations 설정을 해주어서 필요가 없다.-->
+	<!--<mappers>-->
+		<!--<mapper resource="mapper/main/main_sql.xml"/>-->
+	<!--</mappers>-->
+</configuration>
+
