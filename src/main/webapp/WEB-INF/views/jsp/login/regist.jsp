@@ -87,7 +87,7 @@
             <div class="form-group">
                 <label for="birthDate" class="col-sm-2 control-label">생년월일</label>
                 <div class="col-sm-6">
-                    <form:input type="text" path="birthDate" cssClass="input-validation-error form-control" id="birthDate" placeholder="생년월일" required="required"/>
+                    <form:input type="text" path="birthDate" cssClass="input-validation-error form-control" id="birthDate" placeholder="생년월일"/>
                     <form:errors path="birthDate"  id="birthDate" cssClass="errorMsg"/>
                 </div>
             </div>

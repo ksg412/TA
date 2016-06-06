@@ -13,9 +13,11 @@ public class LoginVo extends BaseVo{
     private String pwCheck;
     private String name;
     private String sex;
+
+    @NotEmpty(message = "{validator.required.input}")
     private String birthDate;
 
-    @NotEmpty(message="{empty}")
+    @NotEmpty(message="{javax.validation.constraints.AssertFalse.message}")
     private String phoneNumber;
     private String email;
     private String useYn;
