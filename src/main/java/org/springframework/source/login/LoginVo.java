@@ -2,24 +2,50 @@ package org.springframework.source.login;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.source.common.BaseVo;
+import org.springframework.source.common.annotation.DateValid;
+import org.springframework.source.common.annotation.IdValid;
+import org.springframework.source.common.annotation.NumberValid;
+
+import javax.validation.constraints.Size;
+import java.util.Date;
 
 /**
  * Created by sg on 2016-06-06.
  */
 public class LoginVo extends BaseVo{
 
+    @NotEmpty
+    @Size(min = 5, max = 10)
+    @IdValid
     private String id;
+
+    @NotEmpty
+    @Size(min = 8, max = 20)
     private String pw;
+
+    @NotEmpty
+    @Size(min = 8, max = 20)
     private String pwCheck;
+
+    @NotEmpty
+    @Size(min = 2, max = 10)
     private String name;
+
+    @NotEmpty
     private String sex;
 
-    @NotEmpty(message = "{validator.required.input}")
+    @NotEmpty
+    @DateValid
     private String birthDate;
 
-    @NotEmpty(message="{javax.validation.constraints.AssertFalse.message}")
+    @NotEmpty
+    @Size(min = 10, max = 11)
+    @NumberValid
     private String phoneNumber;
+
+    @NotEmpty
     private String email;
+
     private String useYn;
 
 

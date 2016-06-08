@@ -7,6 +7,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+import org.springframework.source.common.validator.PasswordCheckValidator;
 import org.springframework.source.customAuthentication.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,6 +35,12 @@ public class LoginController {
 
     @Autowired
     private MessageSource messageSource;
+
+    @Autowired
+    private LoginService loginService;
+
+    @Autowired
+    private PasswordCheckValidator passwordCheckValidator;
 
     @RequestMapping(value="login.do")
     public String login(
@@ -65,7 +72,6 @@ public class LoginController {
 
     @RequestMapping(value="selectRegistView.do")
     public String selectRegistView(Model model){
-        System.out.println(messageSource.getMessage("validator.input.error", null, Locale.getDefault()));
         model.addAttribute("loginVo",new LoginVo());
         return "/jsp/login/regist";
     }
@@ -75,13 +81,17 @@ public class LoginController {
             @Valid @ModelAttribute LoginVo loginVo
             ,BindingResult bindingResult
             ,SessionStatus sessionStatus
-    ){
+    ) throws Exception{
+
+        passwordCheckValidator.validate(loginVo,bindingResult);
+
         if(!bindingResult.hasErrors()){
             sessionStatus.setComplete();
+            loginService.insertRegist(loginVo);
             return "redirect:/login/login.do";
         }else{
-            loginVo.setPw("");
-            loginVo.setPwCheck("");
+            loginVo.setPw(null);
+            loginVo.setPwCheck(null);
             return "/jsp/login/regist";
         }
     }

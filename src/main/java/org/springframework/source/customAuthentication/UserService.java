@@ -19,6 +19,7 @@ import java.util.List;
 /**
  * Created by sg on 2016-06-04.
  */
+@Service
 public class UserService implements UserDetailsService{
 
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
@@ -43,7 +44,8 @@ public class UserService implements UserDetailsService{
         User user = new User();
         user.setUsername(username);
 
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        /*PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        passwordEncoder.encode(password)*/
         user.setPassword(loginVo.getPw());
 
         Role role = new Role();

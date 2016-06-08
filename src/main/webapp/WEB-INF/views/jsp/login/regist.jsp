@@ -33,29 +33,28 @@
 <div class="contentwrap">
     <article class="container bgc-white" >
         <div class="page-header">
-            <h1>회원가입 <small>사용자 회원가입</small></h1>
+            <h1>회원가입 <small>일반회원가입</small></h1>
         </div>
         <c:url var="post_url"  value="/login/insertRegist.do" />
-        <form:form commandName="loginVo" data-toggle="validator" cssClass="form-horizontal" id="frm" ACTION="${post_url}" METHOD="POST" >
+        <form:form commandName="loginVo" data-toggle="validator" cssClass="form-horizontal" id="frm" ACTION="${post_url}" METHOD="POST" required="required">
             <div class="form-group">
                 <label for="id" class="col-sm-2 control-label">아이디</label>
                 <div class="col-sm-6">
-                    <form:input type="text" path="id" cssClass="input-validation-error form-control" id="id" placeholder="아이디" required="required"/>
+                    <form:input type="text" path="id" cssClass="input-validation-error form-control" id="id" placeholder="아이디" engNum="true" required="required"/>
                     <form:errors path="id"  id="id" cssClass="errorMsg"/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="pw" class="col-sm-2 control-label">비밀번호</label>
                 <div class="col-sm-6">
-                    <form:input type="password" path="pw" cssClass="input-validation-error form-control" id="pw" placeholder="비밀번호" required="required"/>
+                    <form:input type="password" path="pw" cssClass="input-validation-error form-control" id="pw" placeholder="비밀번호" engNum="true" required="required"/>
                     <form:errors path="pw"  id="pw" cssClass="errorMsg"/>
-                    <p class="help-block">숫자, 특수문자 포함 8자 이상</p>
                 </div>
             </div>
             <div class="form-group">
                 <label for="pwCheck" class="col-sm-2 control-label">비밀번호 확인</label>
                 <div class="col-sm-6">
-                    <form:input type="password" path="pwCheck" cssClass="input-validation-error form-control" id="pwCheck" placeholder="비밀번호 확인" required="required"/>
+                    <form:input type="password" path="pwCheck" cssClass="input-validation-error form-control" id="pwCheck" placeholder="비밀번호 확인" engNum="true" required="required"/>
                     <form:errors path="pwCheck"  id="pwCheck" cssClass="errorMsg"/>
                     <p class="help-block">비밀번호를 한번 더 입력해주세요.</p>
                 </div>
@@ -87,14 +86,14 @@
             <div class="form-group">
                 <label for="birthDate" class="col-sm-2 control-label">생년월일</label>
                 <div class="col-sm-6">
-                    <form:input type="text" path="birthDate" cssClass="input-validation-error form-control" id="birthDate" placeholder="생년월일"/>
+                    <form:input type="text" path="birthDate" cssClass="input-validation-error form-control" id="birthDate" placeholder="생년월일" required="required"/>
                     <form:errors path="birthDate"  id="birthDate" cssClass="errorMsg"/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="phoneNumber" class="col-sm-2 control-label">휴대폰번호</label>
                 <div class="col-sm-6">
-                    <form:input type="number" path="phoneNumber" cssClass="input-validation-error form-control" id="phoneNumber" placeholder="휴대폰번호"/>
+                    <form:input type="number" path="phoneNumber" cssClass="input-validation-error form-control" id="phoneNumber" placeholder="휴대폰번호" required="required"/>
                     <form:errors path="phoneNumber"  id="phoneNumber" cssClass="errorMsg"/>
                     <p class="help-block">- 없이 적어주세요.</p>
                 </div>

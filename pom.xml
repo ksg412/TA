@@ -329,7 +329,7 @@
 				<version>2.2</version>
 				<configuration>
 					<path>/</path>
-					<uriEncoding>utf-8</uriEncoding>
+					<uriEncoding>UTF-8</uriEncoding>
 					<port>8002</port>
 				</configuration>
 			</plugin>
