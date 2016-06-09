@@ -18,14 +18,28 @@
 <!--common script-->
 <script src="<c:url value='/resources/js/common/commonScript.js'/>"></script>
 
+<!--dataTable js 2개의 순서가 중요함.-->
+<script src="<c:url value='/resources/dataTable/jquery.dataTables.min.js'/>"></script>
+<script src="<c:url value='/resources/dataTable/dataTables.bootstrap.min.js'/>"></script>
+
+
 <!--jqueryui css-->
 <link href="/resources/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
 
-<!-- 합쳐지고 최소화된 최신 CSS -->
+<!-- bootstrap 합쳐지고 최소화된 최신 CSS -->
 <link href="/resources/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- 부가적인 테마 -->
+<!-- bootstrap 부가적인 테마 -->
 <link href="<c:url value='/resources/bootstrap/dist/css/bootstrap-theme.css'/>" rel="stylesheet">
+
+<!-- dataTables css-->
+<link href="<c:url value='/resources/dataTable/dataTables.bootstrap.min.css'/>" rel="stylesheet">
+
+<!--헤더부분-->
+<link href="/resources/css/main/offcanvas.css" rel="stylesheet">
+
+<!--풋터부분-->
+<link href="/resources/css/footer/sticky-footer.css" rel="stylesheet">
 
 <!-- 커스텀 css -->
 <link href="<c:url value='/resources/css/common/custom.css'/>" rel="stylesheet">

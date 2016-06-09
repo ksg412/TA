@@ -27,4 +27,14 @@ public class MainController {
     public void test() throws Exception {
         System.out.println(mainService.test());
     }
+
+    @RequestMapping(value = "selectHeaderView.do")
+    public String selectHeaderView() throws Exception{
+        return "/jsp/header/header";
+    }
+
+    @RequestMapping(value = "selectFooterView.do")
+    public String selectFooterView() throws Exception{
+        return "/jsp/footer/footer";
+    }
 }

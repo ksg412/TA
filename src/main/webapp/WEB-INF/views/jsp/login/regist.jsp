@@ -36,7 +36,7 @@
             <h1>회원가입 <small>일반회원가입</small></h1>
         </div>
         <c:url var="post_url"  value="/login/insertRegist.do" />
-        <form:form commandName="loginVo" data-toggle="validator" cssClass="form-horizontal" id="frm" ACTION="${post_url}" METHOD="POST" required="required">
+        <form:form commandName="loginVo" data-toggle="validator" cssClass="form-horizontal" id="frm" ACTION="${post_url}" METHOD="POST">
             <div class="form-group">
                 <label for="id" class="col-sm-2 control-label">아이디</label>
                 <div class="col-sm-6">
