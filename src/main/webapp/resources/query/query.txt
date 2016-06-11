@@ -16,19 +16,16 @@ CREATE TABLE `cm_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE `cm_user` (
-  `id` varchar(20) NOT NULL COMMENT '아이디',
-  `pw` varchar(500) NOT NULL COMMENT '비밀번호',
-  `name` varchar(20) NOT NULL COMMENT '이름',
-  `sex` char(1) NOT NULL COMMENT '성별',
-  `birth_date` date NOT NULL COMMENT '생년월',
-  `phone_number` varchar(11) NOT NULL COMMENT '폰번호',
-  `email` varchar(100) NOT NULL COMMENT '이메일',
-  `use_yn` char(1) NOT NULL COMMENT '사용여부',
-  `manager_yn` char(1) NOT NULL DEFAULT 'N' COMMENT '관리자여부',
+CREATE TABLE `cm_code` (
+  `group_id` varchar(10) NOT NULL,
+  `code_id` varchar(10) NOT NULL,
+  `code_nm` varchar(100) DEFAULT NULL,
+  `code_eng_nm` varchar(100) DEFAULT NULL,
+  `code_detail_nm` varchar(500) DEFAULT NULL,
+  `sort_ordr` int(10) DEFAULT NULL,
   `regist_id` varchar(20) DEFAULT NULL,
   `regist_date` datetime DEFAULT NULL,
   `update_id` varchar(20) DEFAULT NULL,
   `update_date` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`group_id`,`code_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
