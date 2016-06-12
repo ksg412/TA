@@ -1,4 +1,15 @@
 
+/*ajax 요청 csrf 통과*/
+var csrftoken = $('meta[name=csrf-token]').attr('content')
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken)
+        }
+    }
+})
+
+
 //숫자만numberonly='true'
 $(document).on("keyup", "input:text[numberOnly]", function() {$(this).val( $(this).val().replace(/[^0-9]/gi,"") );});
 
@@ -13,3 +24,45 @@ $(document).on("keyup", "input:text[korOnly]", function() {$(this).val( $(this).
 
 //영문+숫자
 $(document).on("keyup", "input:text[engNum]", function() {$(this).val( $(this).val().replace(/[^a-z0-9]/gi,'') );});
+
+
+/*bootstrap select generator*/
+function cmCodeSelectGenerator(targetId, groupId, size, liveSearch, noSelect){
+    $.ajax({
+        method: "POST",
+        url: "/common/selectComboboxData.do",
+        dataType: 'json',
+        data: { groupId: groupId}
+    })
+    .done(function( data ) {
+
+        if(noSelect){
+            $('#'+targetId).append("<option value=''>-선택하세요-</option>");
+        }
+
+        for(var i=0;i<data.length;i++){
+                $('#'+targetId).append("<option value='"+data[i].codeId+"'>"+data[i].codeNm+"</option>");
+        }
+        $('#'+targetId).selectpicker({
+          size: size
+          ,noneSelectedText:"-선택하세요-"
+          ,liveSearch:liveSearch
+        });
+    });
+}
+
+
+$.fn.serializeObject = function(){
+   var obj = {};
+
+   $.each( this.serializeArray(), function(i,o){
+      var n = o.name, v = o.value;
+
+      obj[n] = obj[n] === undefined ? v
+         : $.isArray( obj[n] ) ? obj[n].concat( v )
+         : [ obj[n], v ];
+   });
+
+   return obj;
+};
+

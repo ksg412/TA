@@ -56,7 +56,7 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="../navbar-static-top/">마이페이지</a></li>
+                <li><a href="<c:url value='/myPage/myPageView.do' />">마이페이지</a></li>
                 <li><a href="<c:url value='/login/logout.do' />">로그아웃</a></li>
             </ul>
         </div><!-- /.nav-collapse -->

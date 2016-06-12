@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.springframework.source.common.common.CommonDao">
+    <select id="selectComboboxData" resultType="resultMap">
+        SELECT
+            group_id
+            ,code_id
+            ,code_nm
+            ,code_eng_nm
+            ,code_detail_nm
+        FROM
+            CM_CODE
+        WHERE
+            group_id = #{groupId}
+        AND
+            use_yn = 'Y'
+        order by sort_ordr;
+    </select>
+
+    <select id="getCurrentPassword" resultType="String">
+        SELECT
+            pw
+        FROM CM_USER
+        WHERE id = #{id}
+    </select>
+</mapper>

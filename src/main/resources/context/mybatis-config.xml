@@ -10,11 +10,10 @@
 	</settings>
 
 	<typeAliases>
+
+		<typeAlias alias="resultMap" type="org.springframework.source.common.util.ResultMap"/>
 		<typeAlias alias="loginVo" type="org.springframework.source.login.LoginVo"/>
-		<!--<typeAlias alias="mainVo" type="com.easysport.b40.main.vo.MainVo" />-->
-		<!--<typeAlias alias="memberVo" type="com.easysport.b40.member.vo.MemberVo" />-->
-		<!--<typeAlias alias="userInfoVo" type="com.easysport.b40.userInfo.vo.UserInfoVo" />-->
-		<!--<typeAlias alias="setupVo" type="com.easysport.b40.setup.vo.SetupVo" />-->
+		<typeAlias alias="myPageVo" type="org.springframework.source.myPage.MyPageVo"/>
 	</typeAliases>
 
 	<!--datasource-context.xml에 mapperLocations 설정을 해주어서 필요가 없다.-->

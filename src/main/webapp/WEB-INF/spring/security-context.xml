@@ -14,6 +14,7 @@
         <intercept-url pattern="/login/**" access="permitAll" />
         <intercept-url pattern="/favicon.ico" access="permitAll"/>
         <intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
+        <!--<intercept-url pattern="/**" access="permitAll"/>-->
         <!--<intercept-url pattern="/login_duplicate" access="permitAll" />-->
         <form-login login-page="/login/loginCheck.do"
                     username-parameter="id"
@@ -42,5 +43,7 @@
             <password-encoder ref="bcryptEncoder"/>
         </authentication-provider>
     </authentication-manager>
+
+
 
 </beans:beans>

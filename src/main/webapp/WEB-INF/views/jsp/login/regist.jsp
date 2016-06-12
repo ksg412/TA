@@ -106,7 +106,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="phoneNumber" class="col-sm-2 control-label"></label>
+                <label class="col-sm-2 control-label"></label>
                 <div class="col-sm-6">
                     <button type="submit" class="btn btn-primary">회원가입</button>
                     <button type="button" class="btn btn-primary" onClick="doCancel();">취소</button>

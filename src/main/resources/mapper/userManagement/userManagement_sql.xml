@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.springframework.source.userManagement.UserManagementDao">
+    <select id="selectUserList" resultType="resultMap">
+        SELECT
+            id
+            ,name
+            ,sex
+            ,DATE_FORMAT(birth_date, '%Y-%m-%d') as birth_date
+            ,phone_number
+            ,email
+            ,DATE_FORMAT(join_date, '%Y-%m-%d') as join_date
+        FROM CM_USER
+        WHERE USE_YN = 'Y'
+        <if test='id != null and id != ""'>
+            AND id like concat("%",#{id},"%")
+        </if>
+        <if test='name != null and name != ""'>
+            AND name like concat("%",#{name},"%")
+        </if>
+        <if test='sex != null and sex != ""'>
+            AND sex like concat("%",#{sex},"%")
+        </if>
+        <if test='birthDate != null and birthDate != ""'>
+            AND birth_date = #{birthDate}
+        </if>
+        <if test='phoneNumber != null and phoneNumber != ""'>
+            AND phone_number like concat("%",#{phoneNumber},"%")
+        </if>
+        <if test='email != null and email != ""'>
+            AND email like concat("%",#{email},"%")
+        </if>
+        <if test='joinDate != null and joinDate != ""'>
+            AND join_date = #{joinDate}
+        </if>
+        LIMIT ${start}, ${length}
+    </select>
+
+    <select id="selectUserCount" resultType="int">
+        SELECT count(*) FROM CM_USER WHERE USE_YN = 'Y'
+        <if test='id != null and id != ""'>
+            AND id like concat("%",#{id},"%")
+        </if>
+        <if test='name != null and name != ""'>
+            AND name like concat("%",#{name},"%")
+        </if>
+        <if test='sex != null and sex != ""'>
+            AND sex like concat("%",#{sex},"%")
+        </if>
+        <if test='birthDate != null and birthDate != ""'>
+            AND birth_date = #{birthDate}
+        </if>
+        <if test='phoneNumber != null and phoneNumber != ""'>
+            AND phone_number like concat("%",#{phoneNumber},"%")
+        </if>
+        <if test='email != null and email != ""'>
+            AND email like concat("%",#{email},"%")
+        </if>
+        <if test='joinDate != null and joinDate != ""'>
+            AND join_date = #{joinDate}
+        </if>
+    </select>
+</mapper>
+
+

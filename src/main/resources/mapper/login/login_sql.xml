@@ -13,6 +13,7 @@
             ,birth_date
             ,phone_number
             ,email
+            ,join_date
             ,use_yn
             ,manager_yn
             ,regist_id
@@ -27,6 +28,7 @@
             ,DATE_FORMAT(#{birthDate}, "%Y-%c-%d")
             ,#{phoneNumber}
             ,#{email}
+            ,now()
             ,'Y'
             ,'N'
             ,'admin'

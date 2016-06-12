@@ -21,4 +21,9 @@
 	-->
 	<bean id="requestDataValueProcessor" class="org.springframework.security.web.servlet.support.csrf.CsrfRequestDataValueProcessor"/>
 
+	<!--json-->
+	<!--<bean id="jsonView" class="net.sf.json.spring.web.servlet.view.JsonView"/>-->
+	<!--<bean id="beanNameResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="0" />-->
+	<!--<bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />-->
+
 </beans>

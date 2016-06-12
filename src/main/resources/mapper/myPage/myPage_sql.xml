@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.springframework.source.myPage.MyPageDao">
+
+    <select id="selectMyPageView" resultType="myPageVo">
+        SELECT
+            id
+            ,name
+            ,sex
+            ,DATE_FORMAT(birth_date,'%Y-%m-%d') birth_date
+            ,phone_number
+            ,email
+            ,DATE_FORMAT(join_date,'%Y-%m-%d') join_date
+            ,manager_yn
+        FROM
+            CM_USER
+        WHERE
+            id = #{id}
+    </select>
+
+    <update id="updateMyPageInfo">
+        UPDATE CM_USER
+        SET
+            update_date = now()
+            <if test='pw != null and pw != ""'>
+                ,pw = #{pw}
+            </if>
+            <if test='name != null and name != ""'>
+                ,name = #{name}
+            </if>
+            <if test='sex != null and sex != ""'>
+                ,sex = #{sex}
+            </if>
+            <if test='birthDate != null and birthDate != ""'>
+                ,birth_date = DATE_FORMAT(#{birthDate},'%Y-%m-%d')
+            </if>
+            <if test='phoneNumber != null and phoneNumber != ""'>
+                ,phone_number = #{phoneNumber}
+            </if>
+            <if test='email != null and email != ""'>
+                ,email = #{email}
+            </if>
+            <if test='updateId != null and updateId != ""'>
+                ,update_id = #{updateId}
+            </if>
+        WHERE
+            id = #{id}
+    </update>
+</mapper>
+

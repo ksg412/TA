@@ -8,9 +8,9 @@ import java.util.Date;
 public class BaseVo {
 
     private String registId;
-    private Date registDate;
+    private String registDate;
     private String updateId;
-    private Date updateDate;
+    private String updateDate;
 
     public String getRegistId() {
         return registId;
@@ -20,11 +20,11 @@ public class BaseVo {
         this.registId = registId;
     }
 
-    public Date getRegistDate() {
+    public String getRegistDate() {
         return registDate;
     }
 
-    public void setRegistDate(Date registDate) {
+    public void setRegistDate(String registDate) {
         this.registDate = registDate;
     }
 
@@ -36,11 +36,11 @@ public class BaseVo {
         this.updateId = updateId;
     }
 
-    public Date getUpdateDate() {
+    public String getUpdateDate() {
         return updateDate;
     }
 
-    public void setUpdateDate(Date updateDate) {
+    public void setUpdateDate(String updateDate) {
         this.updateDate = updateDate;
     }
 }
