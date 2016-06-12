@@ -1,7 +1,6 @@
 package org.springframework.source.common.util;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.HashMap;
 import java.util.Map;
