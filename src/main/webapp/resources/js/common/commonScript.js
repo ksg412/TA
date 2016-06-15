@@ -1,6 +1,6 @@
 
 /*ajax 요청 csrf 통과*/
-var csrftoken = $('meta[name=csrf-token]').attr('content')
+var csrftoken = $('meta[name=csrf-token]').attr('content');
 $.ajaxSetup({
     beforeSend: function(xhr, settings) {
         if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
@@ -27,7 +27,7 @@ $(document).on("keyup", "input:text[engNum]", function() {$(this).val( $(this).v
 
 
 /*bootstrap select generator*/
-function cmCodeSelectGenerator(targetId, groupId, size, liveSearch, noSelect){
+function cmCodeSelectGenerator(targetId, groupId, size, liveSearch, noSelect, selectValue){
     $.ajax({
         method: "POST",
         url: "/common/selectComboboxData.do",
@@ -48,9 +48,12 @@ function cmCodeSelectGenerator(targetId, groupId, size, liveSearch, noSelect){
           ,noneSelectedText:"-선택하세요-"
           ,liveSearch:liveSearch
         });
+        if(selectValue != null){
+            $('#'+targetId).selectpicker('val', selectValue);
+        }
+
     });
 }
-
 
 $.fn.serializeObject = function(){
    var obj = {};

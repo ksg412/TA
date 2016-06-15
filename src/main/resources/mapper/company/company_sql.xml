@@ -5,4 +5,62 @@
     <!--SELECT-->
     <!--IFNULL(CONCAT('cp',MAX(SUBSTRING(company_id,3,4))+1),'cp0001')-->
     <!--FROM MD_COMPANY-->
+
+    <insert id="insertCompanyDetail">
+        <selectKey resultType="String" keyProperty="companyId" order="BEFORE">
+            SELECT IFNULL(CONCAT('cp',LPAD(MAX(SUBSTRING(company_id,3,4))+1,4,'0')),'cp0001') from md_company
+        </selectKey>
+
+        insert into md_company
+        (
+            company_id
+            ,type
+            ,name
+            ,manager_name
+            ,company_number
+            ,mobile_phone_number
+            ,company_phone_number
+            ,address
+            ,rm
+            ,regist_id
+            ,regist_date
+            ,update_id
+            ,update_date
+        )values(
+            #{companyId}
+            ,#{type}
+            ,#{name}
+            ,#{managerName}
+            ,#{companyNumber}
+            ,#{mobilePhoneNumber}
+            ,#{companyPhoneNumber}
+            ,#{address}
+            ,#{rm}
+            ,#{registId}
+            ,now()
+            ,#{updateId}
+            ,now()
+        )
+    </insert>
+
+    <select id="selectCompanyList" resultType="resultMap">
+        select
+            company_id
+            ,(select code_nm from cm_code where group_id = 'cpType' and code_id = type) as type
+            ,name
+            ,manager_name
+            ,company_number
+            ,mobile_phone_number
+            ,company_phone_number
+            ,address
+            ,rm
+        from md_company
+        LIMIT ${start}, ${length}
+    </select>
+
+    <select id="selectCompanyCount" resultType="int">
+        select
+            count(*)
+        from md_company
+    </select>
 </mapper>

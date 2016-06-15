@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!--favicon.ico-->
 <!--<link rel="icon" href="resources/favicon.ico">-->
 
@@ -28,6 +30,7 @@
 
 <!-- jquery 2.1.4버전 -->
 <script src="<c:url value='/resources/jquery/1.12.4/jquery-1.12.4.min.js'/>" type="text/javascript"></script>
+<script src="<c:url value='/resources/jqueryform/2.8/jquery.form.js'/>" type="text/javascript"></script>
 <!--jqueryui js-->
 <script src="<c:url value='/resources/jquery-ui-1.11.4.custom/jquery-ui.js'/>" type="text/javascript"></script>
 <!-- 합쳐지고 최소화된 bootstrap 최신 자바스크립트 -->

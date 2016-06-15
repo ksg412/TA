@@ -16,7 +16,7 @@
 
     <script>
         $(document).ready(function() {
-            $('#tableList').DataTable({
+           $('#tableList').DataTable({
                 "pagingType": "full_numbers"
                 ,"processing": true
                 ,"recordsFiltered":100

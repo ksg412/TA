@@ -1,6 +1,10 @@
 package org.springframework.source.company;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.source.common.BaseVo;
+import org.springframework.source.common.annotation.NumberValid;
+
+import javax.validation.constraints.Size;
 
 /**
  * Created by sg on 2016-06-12.
@@ -8,12 +12,33 @@ import org.springframework.source.common.BaseVo;
 public class CompanyVo extends BaseVo {
 
     private String companyId;
+
+    @NotEmpty
     private String type;
+
+    @NotEmpty
+    @Size(min = 0, max = 100)
     private String name;
+
+    @NotEmpty
+    @Size(min=2,max = 10)
     private String managerName;
+
+    @NotEmpty
+    @Size(min = 10, max = 10)
+    @NumberValid
     private String companyNumber;
+
+    @NotEmpty
+    @Size(min = 10, max = 11)
+    @NumberValid
     private String mobilePhoneNumber;
+
+    @NotEmpty
+    @Size(min = 10, max = 11)
+    @NumberValid
     private String companyPhoneNumber;
+
     private String address;
     private String rm;
 

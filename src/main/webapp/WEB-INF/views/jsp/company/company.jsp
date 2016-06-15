@@ -16,10 +16,13 @@
 
     <script>
         $(document).ready(function() {
+            <c:if test="${not empty msg}">
+              alert("<c:out value='${msg}'/>");
+            </c:if>
+
             $('#tableList').DataTable({
                 "pagingType": "full_numbers"
                 ,"processing": true
-                ,"recordsFiltered":100
                 ,serverSide: true
                 ,searching: false
                 ,language:{
@@ -27,19 +30,19 @@
                 }
                 ,"ordering": false
                 ,"ajax": {
-                    "url":"/userManagement/selectUserList.do"
+                    "url":"/company/selectCompanyList"
                     ,"data": function(d){
                          d.form = $("#frm").serializeObject();
                      }
                 }
                 ,"columns": [
-                    { "data": "id","title": "아이디"},
-                    { "data": "name","title": "이름" },
-                    { "data": "sex","title": "성별" },
-                    { "data": "birthDate","title": "생년월일" },
-                    { "data": "phoneNumber","title": "휴대폰번호" },
-                    { "data": "email","title": "이메일" },
-                    { "data": "joinDate","title": "가입일" }
+                    { "data": "companyId","title": "companyId"}
+                    ,{ "data": "type","title": "거래처유형" }
+                    ,{ "data": "name","title": "거래처명" }
+                    ,{ "data": "managerName","title": "담당자" }
+                    ,{ "data": "companyNumber","title": "사업자번호" }
+                    ,{ "data": "mobilePhoneNumber","title": "휴대폰번호" }
+                    ,{ "data": "companyPhoneNumber","title": "회사전화번호" }
                 ]
             });
 
@@ -51,7 +54,7 @@
         }
 
         function doRegist(){
-            location.replace("<c:url value='/company/selectCompanyDetail.do'/>");
+            location.replace("<c:url value='/company/selectCompanyDetail'/>");
         }
     </script>
 </head>
@@ -100,7 +103,6 @@
         <table id="tableList" class="table table-striped table-bordered" cellspacing="0" width="100%">
         </table>
     </div>
-
 </div>
 
 <c:import url="/main/selectFooterView.do"/>

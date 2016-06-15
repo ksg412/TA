@@ -17,3 +17,13 @@
     text-align:right;
     margin:15px 0 15px 0;
 }
+
+.width100p{
+    width:100% !important;
+}
+
+
+/*
+.bootstrap-select{
+    width:100% !important;
+}*/
