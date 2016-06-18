@@ -45,15 +45,17 @@ public class CompanyController {
         return "/jsp/company/companyDetail";
     }
 
-    @RequestMapping(value = "selectCompanyDetail/{target}")
+    @RequestMapping(value = "selectCompanyDetail/{companyId}")
     public String selectCompanyDetailId(
             Model model
             ,@RequestParam Map commandMap
-            ,@PathVariable String singleId
+            ,@PathVariable String companyId
     ) throws Exception{
 
-        model.addAttribute("viewType","update");
-        model.addAttribute("companyVo",new CompanyVo());
+        CompanyVo companyVo = companyService.selectCompanyDetail(companyId);
+        companyVo.setViewType("update");
+
+        model.addAttribute("companyVo",companyVo);
         return "/jsp/company/companyDetail";
     }
 
@@ -69,11 +71,12 @@ public class CompanyController {
             companyVo.setUpdateId(SessionUtil.getSessionId());
             if(companyVo.getViewType().equals("update")){
                 companyService.updateCompanyDetail(companyVo);
+                redirectAttributes.addFlashAttribute("msg", messageUtil.returnMsg("return.update.success"));
             }else{
                 companyService.insertCompanyDetail(companyVo);
+                redirectAttributes.addFlashAttribute("msg", messageUtil.returnMsg("return.insert.success"));
             }
             sessionStatus.setComplete();
-            redirectAttributes.addFlashAttribute("msg", messageUtil.returnMsg("return.insert.success"));
             return "redirect:/company/selectCompanyView.do";
         }else{
             return "/jsp/company/companyDetail";

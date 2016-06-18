@@ -35,4 +35,9 @@ public class CompanyServiceImpl implements CompanyService{
     public int selectCompanyCount(Map commandMap) throws Exception {
         return companyDao.selectCompanyCount(commandMap);
     }
+
+    @Override
+    public CompanyVo selectCompanyDetail(String companyId) throws Exception {
+        return companyDao.selectCompanyDetail(companyId);
+    }
 }

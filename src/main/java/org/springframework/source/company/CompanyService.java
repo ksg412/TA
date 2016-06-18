@@ -11,5 +11,6 @@ public interface CompanyService {
     void updateCompanyDetail(CompanyVo companyVo) throws Exception;
     List selectCompanyList(Map commandMap) throws Exception;
     int selectCompanyCount(Map commandMap) throws Exception;
+    CompanyVo selectCompanyDetail(String companyId) throws Exception;
 
 }

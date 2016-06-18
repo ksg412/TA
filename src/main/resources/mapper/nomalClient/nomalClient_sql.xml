@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.springframework.source.nomalClient.NomalClientDao">
+    <select id="selectNomalClientList" resultType="nomalClientVo">
+        select
+            nc_id
+            ,name
+            ,birth_date
+            ,phone_number
+            ,email
+            ,address
+            ,rm
+        from md_nomal_client
+
+    </select>
+
+    <select id="selectNomalClientCount" resultType="nomalClientVo">
+        select
+        count(*)
+        from md_nomal_client
+    </select>
+</mapper>
+

@@ -53,7 +53,11 @@
         }
 
         function doRegist(){
-            location.replace("<c:url value='/nomalClient/selectNomalClientDetailView'/>");
+            location.replace("<c:url value='/nomalClient/selectNomalClientDetail'/>");
+        }
+
+        function doDetail(){
+
         }
     </script>
 </head>

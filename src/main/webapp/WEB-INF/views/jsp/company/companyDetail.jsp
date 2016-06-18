@@ -31,7 +31,6 @@
 <c:import url="/main/selectHeaderView.do"/>
 
 <div class="contentwrap">
-    ${companyVo.type}
     <article class="container bgc-white" >
         <div class="page-header">
             <h1>거래처관리 <small>상세보기</small></h1>
@@ -39,8 +38,7 @@
         <c:url var="post_url"  value="/company/saveCompanyDetail" />
         <form:form commandName="companyVo" data-toggle="validator" cssClass="form-horizontal" id="frm" ACTION="${post_url}" METHOD="POST">
             <form:hidden path="viewType" />
-            <form:hidden path="target01" />
-            <form:hidden path="tableData02"/>
+            <form:hidden path="companyId" />
             <div class="form-group">
                 <label for="name" class="col-sm-2 control-label">거래처유형</label>
                 <div class="col-sm-6">

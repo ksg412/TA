@@ -103,4 +103,33 @@
             and company_phone_number like concat('%',#{companyPhoneNumber},'%')
         </if>
     </select>
+
+    <select id="selectCompanyDetail" resultType="companyVo">
+        select
+            company_id
+            ,type
+            ,name
+            ,manager_name
+            ,company_number
+            ,mobile_phone_number
+            ,company_phone_number
+            ,address
+            ,rm
+        from md_company
+        where company_id = #{companyId}
+    </select>
+
+    <update id="updateCompanyDetail">
+        update md_company
+        set
+            type = #{type}
+            ,name = #{name}
+            ,manager_name = #{managerName}
+            ,company_number = #{companyNumber}
+            ,mobile_phone_number = #{mobilePhoneNumber}
+            ,company_phone_number = #{companyPhoneNumber}
+            ,address = #{address}
+            ,rm = #{rm}
+        where company_id = #{companyId}
+    </update>
 </mapper>

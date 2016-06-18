@@ -72,8 +72,13 @@
             location.replace("<c:url value='/company/selectCompanyDetail'/>");
         }
 
-        function doUpdate(){
-
+        function doDetail(){
+            var selectRow = $("#tableList").DataTable().rows('.selected').data();
+            if(selectRow.length == 1){
+                location.replace("<c:url value='/company/selectCompanyDetail/"+selectRow[0].companyId+"'/>");
+            }else{
+                alert('항목을 선택해주세요');
+            }
         }
     </script>
 </head>
@@ -115,7 +120,7 @@
     <div class="col-xs-12 col-lg-12 button-box">
         <button type="button" class="btn btn-primary" onClick="search();">검색</button>
         <button type="button" class="btn btn-success" onClick="doRegist();">등록</button>
-        <button type="button" class="btn btn-info" onClick="doUpdate();">상세보기</button>
+        <button type="button" class="btn btn-info" onClick="doDetail();">상세보기</button>
         <button type="button" class="btn btn-danger" onClick="alert('개발중');">삭제</button>
     </div>
 
