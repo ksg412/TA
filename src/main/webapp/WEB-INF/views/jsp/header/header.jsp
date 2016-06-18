@@ -18,7 +18,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">정보관리<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">고객관리(일반) </a></li>
+                        <li><a href="<c:url value='/nomalClient/selectNomalClientView' />">고객관리(일반) </a></li>
                         <li><a href="#">고객관리(거래처) </a></li>
                         <li><a href="<c:url value='/company/selectCompanyView.do' />">거래처관리</a></li>
                     </ul>

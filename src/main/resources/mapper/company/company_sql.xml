@@ -55,6 +55,26 @@
             ,address
             ,rm
         from md_company
+        where
+            1=1
+        <if test='type != null and type != ""'>
+            and type = #{type}
+        </if>
+        <if test='name != null and name != ""'>
+            and name like concat('%',name,'%')
+        </if>
+        <if test='managerName != null and managerName != ""'>
+            and manager_name like concat('%',#{managerName},'%')
+        </if>
+        <if test='companyNumber != null and companyNumber != ""'>
+            and company_number like concat('%',#{companyNumber},'%')
+        </if>
+        <if test='mobilePhoneNumber != null and mobilePhoneNumber != ""'>
+            and mobile_phone_number like concat('%',#{mobilePhoneNumber},'%')
+        </if>
+        <if test='companyPhoneNumber != null and companyPhoneNumber != ""'>
+            and company_phone_number like concat('%',#{companyPhoneNumber},'%')
+        </if>
         LIMIT ${start}, ${length}
     </select>
 
@@ -62,5 +82,25 @@
         select
             count(*)
         from md_company
+        where
+        1=1
+        <if test='type != null and type != ""'>
+            and type = #{type}
+        </if>
+        <if test='name != null and name != ""'>
+            and name like concat('%',#{name},'%')
+        </if>
+        <if test='managerName != null and managerName != ""'>
+            and manager_name like concat('%',#{managerName},'%')
+        </if>
+        <if test='companyNumber != null and companyNumber != ""'>
+            and company_number like concat('%',#{companyNumber},'%')
+        </if>
+        <if test='mobilePhoneNumber != null and mobilePhoneNumber != ""'>
+            and mobile_phone_number like concat('%',#{mobilePhoneNumber},'%')
+        </if>
+        <if test='companyPhoneNumber != null and companyPhoneNumber != ""'>
+            and company_phone_number like concat('%',#{companyPhoneNumber},'%')
+        </if>
     </select>
 </mapper>

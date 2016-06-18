@@ -20,7 +20,7 @@
               alert("<c:out value='${msg}'/>");
             </c:if>
 
-            var table = $('#tableList').DataTable({
+            $('#tableList').DataTable({
                 "pagingType": "full_numbers"
                 ,"processing": true
                 ,serverSide: true
@@ -36,30 +36,14 @@
                      }
                 }
                 ,"columns": [
-                    { "data": "companyId","title": "companyId","visible":false}
-                    ,{ "data": "type","title": "거래처유형" }
-                    ,{ "data": "name","title": "거래처명" }
-                    ,{ "data": "managerName","title": "담당자" }
-                    ,{ "data": "companyNumber","title": "사업자번호" }
-                    ,{ "data": "mobilePhoneNumber","title": "휴대폰번호" }
-                    ,{ "data": "companyPhoneNumber","title": "회사전화번호" }
+                    { "data": "cnId","title": "cnId","visible":false},
+                    { "data": "name","title": "이름" },
+                    { "data": "birthDate","title": "생년월일" },
+                    { "data": "phoneNumber","title": "휴대폰번호" },
+                    { "data": "email","title": "이메일" },
+                    { "data": "address","title": "주소" }
                 ]
             });
-
-            $('#tableList tbody').on( 'click', 'tr', function () {
-                if ( $(this).hasClass('selected') ) {
-                    $(this).removeClass('selected');
-                }
-                else {
-                    table.$('tr.selected').removeClass('selected');
-                    $(this).addClass('selected');
-                }
-            } );
-
-            $('#button').click( function () {
-                table.row('.selected').remove().draw( false );
-            } );
-
 
             cmCodeSelectGenerator('type', 'cpType', 10, false ,true);
         });
@@ -69,11 +53,7 @@
         }
 
         function doRegist(){
-            location.replace("<c:url value='/company/selectCompanyDetail'/>");
-        }
-
-        function doUpdate(){
-
+            location.replace("<c:url value='/nomalClient/selectNomalClientDetailView'/>");
         }
     </script>
 </head>
@@ -115,7 +95,6 @@
     <div class="col-xs-12 col-lg-12 button-box">
         <button type="button" class="btn btn-primary" onClick="search();">검색</button>
         <button type="button" class="btn btn-success" onClick="doRegist();">등록</button>
-        <button type="button" class="btn btn-info" onClick="doUpdate();">상세보기</button>
         <button type="button" class="btn btn-danger" onClick="alert('개발중');">삭제</button>
     </div>
 
