@@ -39,9 +39,6 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @Autowired
-    private PasswordCheckValidator passwordCheckValidator;
-
     @RequestMapping(value="login.do")
     public String login(
             HttpServletRequest request
@@ -83,6 +80,7 @@ public class LoginController {
             ,SessionStatus sessionStatus
     ) throws Exception{
 
+        PasswordCheckValidator passwordCheckValidator = new PasswordCheckValidator();
         passwordCheckValidator.validate(loginVo,bindingResult);
 
         if(!bindingResult.hasErrors()){

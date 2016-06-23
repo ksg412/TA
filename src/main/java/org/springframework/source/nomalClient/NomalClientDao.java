@@ -13,5 +13,11 @@ import java.util.Map;
 public interface NomalClientDao {
     List selectNomalClientList(Map comandMap) throws SQLException;
     int selectNomalClientCount(Map comandMap) throws SQLException;
-
+    void updateNomalClientDetail(NomalClientVo nomalClientVo) throws SQLException;
+    void insertNomalClientDetail(NomalClientVo nomalClientVo) throws SQLException;
+    void insertNomalClientDetailList(NomalClientVo nomalClientVo) throws SQLException;
+    void deleteNomalClientDetailList(NomalClientVo nomalClientVo) throws SQLException;
+    List selectNomalClientDetailList(Map commandMap) throws SQLException;
+    int selectNomalClientDetailCount(Map commandMap) throws SQLException;
+    NomalClientVo selectNomalClientDetail(String ncId) throws SQLException;
 }

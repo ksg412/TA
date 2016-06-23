@@ -25,6 +25,16 @@
 table.dataTable tbody tr.selected{
         background-color: #B0BED9;
 }
+.tableList-btn{
+    text-align: right;
+}
+.dialog-group{
+    margin-button:0 0 10px 0;
+}
+.dialog-p{
+    margin-bottom: 10px;
+}
+
 /*
 .bootstrap-select{
     width:100% !important;

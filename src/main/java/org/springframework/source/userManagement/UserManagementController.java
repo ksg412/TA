@@ -40,4 +40,5 @@ public class UserManagementController {
         returnMap.put("recordsFiltered",dataCount);
         return returnMap;
     }
+
 }

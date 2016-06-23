@@ -1,6 +1,11 @@
 package org.springframework.source.nomalClient;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.source.common.BaseVo;
+import org.springframework.source.common.annotation.DateValid;
+import org.springframework.source.common.annotation.NumberValid;
+
+import javax.validation.constraints.Size;
 
 /**
  * Created by sg on 2016-06-18.
@@ -8,10 +13,23 @@ import org.springframework.source.common.BaseVo;
 public class NomalClientVo extends BaseVo {
 
     private String ncId;
+
+    @NotEmpty
+    @Size(min = 2, max = 10)
     private String name;
+
+    @NotEmpty
+    @DateValid
     private String birthDate;
+
+    @NotEmpty
+    @Size(min = 10, max = 11)
+    @NumberValid
     private String phoneNumber;
+
+    @NotEmpty
     private String email;
+
     private String address;
     private String rm;
 

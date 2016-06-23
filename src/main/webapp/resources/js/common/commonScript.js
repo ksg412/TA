@@ -69,3 +69,60 @@ $.fn.serializeObject = function(){
    return obj;
 };
 
+function datetimeGenerator(targetId){
+    $('#'+targetId).datetimepicker({
+        locale:'ko'
+        ,format: 'YYYY-MM-DD'
+    });
+}
+
+
+function checkLength( o, n, tip,min, max ) {
+    o = $("#"+o);
+    if ( o.val().length > max || o.val().length < min ) {
+        o.addClass( "ui-state-error" );
+
+        $("#"+tip).text(n + " 길이는 " +
+        min + "보다 크고 " + max + "보다 작아야 한다.").addClass( "ui-state-highlight" );
+        setTimeout(function() {
+            $("#"+tip).removeClass( "ui-state-highlight", 1500 );
+        }, 500 );
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function checkEmpty( o, n, tip){
+    o = $("#"+o);
+    if ( o.val() == null || o.val() == "" ) {
+        o.addClass( "ui-state-error" );
+
+        $("#"+tip).text(n + " 필수값입니다.").addClass( "ui-state-highlight" );
+        setTimeout(function() {
+            $("#"+tip).removeClass( "ui-state-highlight", 1500 );
+        }, 500 );
+        return false;
+    } else {
+        return true;
+    }
+}
+
+    function dataTableSingleSelect(table, tableId){
+    $('#'+tableId+' tbody').on( 'click', 'tr', function () {
+        if ( $(this).hasClass('selected') ) {
+            $(this).removeClass('selected');
+        }
+        else {
+            table.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+        }
+    });
+
+    $('#button').click( function () {
+        table.row('.selected').remove().draw( false );
+    } );
+
+}
+
+

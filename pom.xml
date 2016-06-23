@@ -204,11 +204,24 @@
 			<version>1.9.12</version>
 		</dependency>
 <!--json-->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${org.aspectj-version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.3.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>3.1</version>
+			<type>jar</type>
+			<scope>compile</scope>
 		</dependency>
 
 		<!-- Test -->
@@ -246,6 +259,16 @@
 			<groupId>org.springframework.webflow</groupId>
 			<artifactId>org.springframework.binding</artifactId>
 			<version>2.0.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>net.minidev</groupId>
+			<artifactId>json-smart</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.2.4</version>
 		</dependency>
 	</dependencies>
 	<repositories>

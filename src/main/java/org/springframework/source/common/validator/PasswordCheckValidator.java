@@ -8,7 +8,7 @@ import org.springframework.validation.Validator;
 /**
  * Created by sg on 2016-06-07.
  */
-@Component
+
 public class PasswordCheckValidator implements Validator {
 
     @Override

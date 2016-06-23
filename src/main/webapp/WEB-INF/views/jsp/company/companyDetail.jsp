@@ -9,11 +9,6 @@
     <title>거래처관리(상세보기)</title>
     <script type="text/javascript">
         $(document).ready(function() {
-            <!--$('#birthDate').datetimepicker({-->
-                <!--locale:'ko'-->
-                <!--,format: 'YYYY-MM-DD'-->
-            <!--});-->
-
             cmCodeSelectGenerator('type', 'cpType', 10, false,true,"${companyVo.type}");
         });
 

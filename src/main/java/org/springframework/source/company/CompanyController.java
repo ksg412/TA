@@ -1,8 +1,8 @@
 package org.springframework.source.company;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.source.common.util.CommonUtil;
-import org.springframework.source.common.util.MessageUtil;
 import org.springframework.source.common.util.SessionUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -27,7 +28,7 @@ public class CompanyController {
     private CompanyService companyService;
 
     @Autowired
-    private MessageUtil messageUtil;
+    private MessageSource messageSource;
 
     @RequestMapping(value = "selectCompanyView.do")
     public String selectCompanyView() throws Exception{
@@ -71,10 +72,10 @@ public class CompanyController {
             companyVo.setUpdateId(SessionUtil.getSessionId());
             if(companyVo.getViewType().equals("update")){
                 companyService.updateCompanyDetail(companyVo);
-                redirectAttributes.addFlashAttribute("msg", messageUtil.returnMsg("return.update.success"));
+                redirectAttributes.addFlashAttribute("msg", messageSource.getMessage("return.update.success",null, Locale.getDefault()));
             }else{
                 companyService.insertCompanyDetail(companyVo);
-                redirectAttributes.addFlashAttribute("msg", messageUtil.returnMsg("return.insert.success"));
+                redirectAttributes.addFlashAttribute("msg", messageSource.getMessage("return.insert.success",null, Locale.getDefault()));
             }
             sessionStatus.setComplete();
             return "redirect:/company/selectCompanyView.do";

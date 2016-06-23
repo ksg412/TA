@@ -20,7 +20,7 @@
               alert("<c:out value='${msg}'/>");
             </c:if>
 
-            $('#tableList').DataTable({
+            var table = $('#tableList').DataTable({
                 "pagingType": "full_numbers"
                 ,"processing": true
                 ,serverSide: true
@@ -30,21 +30,22 @@
                 }
                 ,"ordering": false
                 ,"ajax": {
-                    "url":"/company/selectCompanyList"
+                    "url":"/nomalClient/selectNomalClientList"
                     ,"data": function(d){
                          d.form = $("#frm").serializeObject();
                      }
                 }
                 ,"columns": [
-                    { "data": "cnId","title": "cnId","visible":false},
+                    { "data": "ncId","title": "cnId","visible":false},
                     { "data": "name","title": "이름" },
                     { "data": "birthDate","title": "생년월일" },
                     { "data": "phoneNumber","title": "휴대폰번호" },
-                    { "data": "email","title": "이메일" },
-                    { "data": "address","title": "주소" }
+                    { "data": "email","title": "이메일" }
                 ]
             });
 
+            datetimeGenerator("birthDate");
+            dataTableSingleSelect(table, "tableList");
             cmCodeSelectGenerator('type', 'cpType', 10, false ,true);
         });
 
@@ -57,7 +58,12 @@
         }
 
         function doDetail(){
-
+            var selectRow = $("#tableList").DataTable().rows('.selected').data();
+            if(selectRow.length == 1){
+                location.replace("<c:url value='/nomalClient/selectNomalClientDetail/"+selectRow[0].ncId+"'/>");
+            }else{
+                alert('항목을 선택해주세요');
+            }
         }
     </script>
 </head>
@@ -70,28 +76,21 @@
     <div class="col-xs-12 col-lg-12 search-box">
         <form class="form-inline" id="frm" ACTION="${post_url}" METHOD="POST">
             <div class="form-group search-item">
-                <label for="type">거래처유형</label>
-                <select class="input-validation-error" id="type" name="type"></select>
-            </div>
-            <div class="form-group search-item">
-                <label for="name" >거래처명</label>
+                <label for="name">이름</label>
                 <input type="text" class="input-validation-error form-control" id="name" name="name"/>
+                <!--<select class="input-validation-error" id="type" name="type"></select>-->
             </div>
             <div class="form-group search-item">
-                <label for="managerName" >담당자</label>
-                <input type="text" class="input-validation-error form-control" id="managerName" name="managerName"/>
+                <label for="birthDate" >생년월일</label>
+                <input type="text" class="input-validation-error form-control" id="birthDate" name="birthDate"/>
             </div>
             <div class="form-group search-item">
-                <label for="companyNumber" >사업자번호</label>
-                <input type="text" class="input-validation-error form-control" id="companyNumber" name="companyNumber"/>
+                <label for="phoneNumber" >휴대폰번호</label>
+                <input type="text" class="input-validation-error form-control" id="phoneNumber" name="phoneNumber"/>
             </div>
             <div class="form-group search-item">
-                <label for="mobilePhoneNumber" >휴대폰번호</label>
-                <input type="text" class="input-validation-error form-control" id="mobilePhoneNumber" name="mobilePhoneNumber"/>
-            </div>
-            <div class="form-group search-item">
-                <label for="companyPhoneNumber" >회사전화번호</label>
-                <input type="text" class="input-validation-error form-control" id="companyPhoneNumber" name="companyPhoneNumber"/>
+                <label for="email" >이메일</label>
+                <input type="text" class="input-validation-error form-control" id="email" name="email"/>
             </div>
         </form>
     </div>
@@ -99,6 +98,7 @@
     <div class="col-xs-12 col-lg-12 button-box">
         <button type="button" class="btn btn-primary" onClick="search();">검색</button>
         <button type="button" class="btn btn-success" onClick="doRegist();">등록</button>
+        <button type="button" class="btn btn-info" onClick="doDetail();">상세보기</button>
         <button type="button" class="btn btn-danger" onClick="alert('개발중');">삭제</button>
     </div>
 

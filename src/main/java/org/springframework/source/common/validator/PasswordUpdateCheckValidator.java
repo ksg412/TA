@@ -15,7 +15,6 @@ import org.springframework.validation.Validator;
 /**
  * Created by sg on 2016-06-07.
  */
-@Component
 public class PasswordUpdateCheckValidator implements Validator {
 
     private static final Logger logger = LoggerFactory.getLogger(PasswordUpdateCheckValidator.class);

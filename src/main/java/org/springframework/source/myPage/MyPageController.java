@@ -22,9 +22,6 @@ public class MyPageController {
     @Autowired
     private MyPageService myPageService;
 
-    @Autowired
-    private PasswordUpdateCheckValidator passwordUpdateCheckValidator;
-
     @RequestMapping(value = "myPageView.do")
     public String myPageView(Model model) throws Exception{
         MyPageVo myPageVo = myPageService.selectMyPageView(SessionUtil.getSessionId());
@@ -39,6 +36,7 @@ public class MyPageController {
             ,SessionStatus sessionStatus
     ) throws Exception{
 
+        PasswordUpdateCheckValidator passwordUpdateCheckValidator = new PasswordUpdateCheckValidator();
         passwordUpdateCheckValidator.validate(myPageVo,bindingResult);
 
         if(!bindingResult.hasErrors()){

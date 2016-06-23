@@ -1,6 +1,8 @@
 package org.springframework.source.common;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by sg on 2016-06-06.
@@ -17,7 +19,7 @@ public class BaseVo {
     private String target02;
     private String tableData01;
     private String tableData02;
-
+    private List<Map<String,Object>> insertList;
 
     public String getRegistId() {
         return registId;
@@ -89,5 +91,13 @@ public class BaseVo {
 
     public void setTableData02(String tableData02) {
         this.tableData02 = tableData02;
+    }
+
+    public List<Map<String, Object>> getInsertList() {
+        return insertList;
+    }
+
+    public void setInsertList(List<Map<String, Object>> insertList) {
+        this.insertList = insertList;
     }
 }
