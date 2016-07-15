@@ -17,7 +17,7 @@
     <script>
         $(document).ready(function() {
             <c:if test="${not empty msg}">
-              alert("<c:out value='${msg}'/>");
+            alert("<c:out value='${msg}'/>");
             </c:if>
 
             var table = $('#tableList').DataTable({
@@ -30,13 +30,13 @@
                 }
                 ,"ordering": false
                 ,"ajax": {
-                    "url":"/nomalClient/selectNomalClientList"
+                    "url":"/companyClient/selectCompanyClientList"
                     ,"data": function(d){
-                         d.form = $("#frm").serializeObject();
-                     }
+                        d.form = $("#frm").serializeObject();
+                    }
                 }
                 ,"columns": [
-                    { "data": "ncId","title": "cnId","visible":false},
+                    { "data": "ccId","title": "cnId","visible":false},
                     { "data": "name","title": "이름" },
                     { "data": "birthDate","title": "생년월일" },
                     { "data": "phoneNumber","title": "휴대폰번호" },
@@ -54,13 +54,13 @@
         }
 
         function doRegist(){
-            location.replace("<c:url value='/nomalClient/selectNomalClientDetail'/>");
+            location.replace("<c:url value='/companyClient/selectCompanyClientDetail'/>");
         }
 
         function doDetail(){
             var selectRow = $("#tableList").DataTable().rows('.selected').data();
             if(selectRow.length == 1){
-                location.replace("<c:url value='/nomalClient/selectNomalClientDetail/"+selectRow[0].ncId+"'/>");
+                location.replace("<c:url value='/companyClient/selectCompanyClientDetail/"+selectRow[0].ccId+"'/>");
             }else{
                 alert('항목을 선택해주세요');
             }
@@ -74,7 +74,7 @@
 
 <div class="container">
     <div class="page-title">
-        <h2 class="page-title-h2">고객관리(일반) <small>정보검색</small></h2>
+        <h2 class="page-title-h2">고객관리(거래처) <small>정보검색</small></h2>
     </div>
     <div class="col-xs-12 col-lg-12 search-box">
         <form class="form-inline" id="frm" ACTION="${post_url}" METHOD="POST">

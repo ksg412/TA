@@ -97,4 +97,11 @@ public class CompanyController {
         returnMap.put("recordsFiltered",dataCount);
         return returnMap;
     }
+
+    @ResponseBody
+    @RequestMapping(value="selectCompanyComboList")
+    public Object selectCompanyComboList(@RequestParam Map commandMap) throws Exception{
+        List comboData = companyService.selectCompanyComboList(commandMap);
+        return comboData;
+    }
 }

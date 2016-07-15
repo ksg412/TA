@@ -35,25 +35,29 @@ function cmCodeSelectGenerator(targetId, groupId, size, liveSearch, noSelect, se
         data: { groupId: groupId}
     })
     .done(function( data ) {
-
-        if(noSelect){
-            $('#'+targetId).append("<option value=''>-선택하세요-</option>");
-        }
-
-        for(var i=0;i<data.length;i++){
-                $('#'+targetId).append("<option value='"+data[i].codeId+"'>"+data[i].codeNm+"</option>");
-        }
-        $('#'+targetId).selectpicker({
-          size: size
-          ,noneSelectedText:"-선택하세요-"
-          ,liveSearch:liveSearch
-        });
-        if(selectValue != null){
-            $('#'+targetId).selectpicker('val', selectValue);
-        }
-
+        selectGenerator(data, targetId, size, liveSearch, noSelect, selectValue);
     });
 }
+
+function selectGenerator(data, targetId, size, liveSearch, noSelect, selectValue){
+    if(noSelect){
+        $('#'+targetId).append("<option value=''>-선택하세요-</option>");
+    }
+
+    for(var i=0;i<data.length;i++){
+        $('#'+targetId).append("<option value='"+data[i].codeId+"'>"+data[i].codeNm+"</option>");
+    }
+
+    $('#'+targetId).selectpicker({
+        size: size
+        ,noneSelectedText:"-선택하세요-"
+        ,liveSearch:liveSearch
+    });
+    if(selectValue != null){
+        $('#'+targetId).selectpicker('val', selectValue);
+    }
+}
+
 
 $.fn.serializeObject = function(){
    var obj = {};
@@ -125,4 +129,33 @@ function checkEmpty( o, n, tip){
 
 }
 
+var dataTableCheckBox = {
+    'title':"<input type='checkbox' id='table-select-all'>",
+    'targets': 0,
+    'searchable':false,
+    'orderable':false,
+    'className': 'dt-body-center',
+    'render': function (data, type, full, meta){
+        return '<input type="checkbox" name="id[]" value="'+ $('<div/>').text(data).html() + '">';
+    }
+}
 
+function selectAllClick(table){
+    $('#table-select-all').on('click', function(){
+        var rows = table.rows({ 'search': 'applied' }).nodes();
+        $('input[type="checkbox"]', rows).prop('checked', this.checked);
+    });
+}
+
+function getSelectedRow(table){
+    table.$('input[type="checkbox"]').each(function(){
+        // If checkbox doesn't exist in DOM
+        if(!$.contains(document, this)){
+            // If checkbox is checked
+            if(this.checked){
+                // Create a hidden element
+                alert(this);
+            }
+        }
+    });
+}

@@ -61,7 +61,7 @@
             } );
 
 
-            cmCodeSelectGenerator('type', 'cpType', 10, false ,true);
+            cmCodeSelectGenerator('type', 'cpType', 10, true ,true, null);
         });
 
         function search(){
@@ -88,6 +88,9 @@
 <c:import url="/main/selectHeaderView.do"/>
 
 <div class="container">
+    <div class="page-title">
+        <h2 class="page-title-h2">거래처관리 <small>정보검색</small></h2>
+    </div>
     <div class="col-xs-12 col-lg-12 search-box">
         <form class="form-inline" id="frm" ACTION="${post_url}" METHOD="POST">
             <div class="form-group search-item">
@@ -120,7 +123,7 @@
     <div class="col-xs-12 col-lg-12 button-box">
         <button type="button" class="btn btn-primary" onClick="search();">검색</button>
         <button type="button" class="btn btn-success" onClick="doRegist();">등록</button>
-        <button type="button" class="btn btn-info" onClick="doDetail();">상세보기</button>
+        <button type="button" class="btn btn-success" onClick="doDetail();">상세보기</button>
         <button type="button" class="btn btn-danger" onClick="alert('개발중');">삭제</button>
     </div>
 

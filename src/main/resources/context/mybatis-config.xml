@@ -16,6 +16,8 @@
 		<typeAlias alias="myPageVo" type="org.springframework.source.myPage.MyPageVo"/>
 		<typeAlias alias="companyVo" type="org.springframework.source.company.CompanyVo"/>
 		<typeAlias alias="nomalClientVo" type="org.springframework.source.nomalClient.NomalClientVo"/>
+		<typeAlias alias="companyClientVo" type="org.springframework.source.companyClient.CompanyClientVo"/>
+
 	</typeAliases>
 
 	<!--datasource-context.xml에 mapperLocations 설정을 해주어서 필요가 없다.-->

@@ -13,6 +13,81 @@
     <%@ include file="/WEB-INF/views/jsp/common/commonStyle.jsp"%>
     <script src="/resources/js/main/offcanvas.js"></script>
     <title>Off Canvas Template for Bootstrap</title>
+
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart1);
+        google.charts.setOnLoadCallback(drawChart2);
+        google.charts.setOnLoadCallback(drawChart3);
+
+        function drawChart1() {
+
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Topping');
+            data.addColumn('number', 'Slices');
+            data.addRows([
+                ['일반고객', 33],
+                ['거래처고객', 11]
+            ]);
+
+            // Set chart options
+            var options = {'title':'7월 고객통계',
+                'width':400,
+                'height':300};
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.PieChart(document.getElementById('chart_div1'));
+            chart.draw(data, options);
+        }
+
+        function drawChart2() {
+
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Topping');
+            data.addColumn('number', 'Slices');
+            data.addRows([
+                ['전세기', 3],
+                ['해외', 1],
+                ['국내', 1],
+                ['자유', 1]
+            ]);
+
+            // Set chart options
+            var options = {'title':'7월 판매통계',
+                'width':400,
+                'height':300};
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.PieChart(document.getElementById('chart_div2'));
+            chart.draw(data, options);
+        }
+
+        function drawChart3() {
+            // Some raw data (not necessarily accurate)
+            var data = google.visualization.arrayToDataTable([
+                ['Month', '전세기', '해외', '국내', '자유'],
+                ['2016/01', 165, 938, 522, 998],
+                ['2016/02', 135, 1120, 599, 1268],
+                ['2016/03', 157, 1167, 587, 807],
+                ['2016/04', 139, 1110, 615, 968],
+                ['2016/05', 136, 691, 629, 1026],
+                ['2016/06', 136, 691, 629, 26]
+            ]);
+
+            var options = {
+                title : '월별 판매 실적',
+                vAxis: {title: '판매량'},
+                hAxis: {title: '월'},
+                seriesType: 'bars',
+                series: {5: {type: 'line'}}
+            };
+
+            var chart = new google.visualization.ComboChart(document.getElementById('chart_div3'));
+            chart.draw(data, options);
+        }
+    </script>
 </head>
 
 <body>
@@ -32,35 +107,14 @@
                 <p><spring:message code="jsp.main.mainMessage02"/></p>
             </div>
             <div class="row">
-                <div class="col-xs-6 col-lg-4">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                <div class="col-xs-6 col-lg-6">
+                    <div id="chart_div1"></div>
                 </div><!--/.col-xs-6.col-lg-4-->
-                <div class="col-xs-6 col-lg-4">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                <div class="col-xs-6 col-lg-6">
+                    <div id="chart_div2"></div>
                 </div><!--/.col-xs-6.col-lg-4-->
-                <div class="col-xs-6 col-lg-4">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                </div><!--/.col-xs-6.col-lg-4-->
-                <div class="col-xs-6 col-lg-4">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                </div><!--/.col-xs-6.col-lg-4-->
-                <div class="col-xs-6 col-lg-4">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                </div><!--/.col-xs-6.col-lg-4-->
-                <div class="col-xs-6 col-lg-4">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                <div class="col-xs-6 col-lg-12">
+                    <div id="chart_div3"></div>
                 </div><!--/.col-xs-6.col-lg-4-->
             </div><!--/row-->
         </div><!--/.col-xs-12.col-sm-9-->

@@ -40,4 +40,9 @@ public class CompanyServiceImpl implements CompanyService{
     public CompanyVo selectCompanyDetail(String companyId) throws Exception {
         return companyDao.selectCompanyDetail(companyId);
     }
+
+    @Override
+    public List selectCompanyComboList(Map commandMap) throws Exception {
+        return companyDao.selectCompanyComboList(commandMap);
+    }
 }

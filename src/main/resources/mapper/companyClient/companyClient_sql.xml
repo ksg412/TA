@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.springframework.source.companyClient.CompanyClientDao">
+    
+    <select id="selectCompanyClientList" resultType="companyClientVo">
+        select
+        cc_id
+        ,company_id
+        ,name
+        ,birth_date
+        ,phone_number
+        ,email
+        ,address
+        ,rm
+        from md_company_client
+        where 1=1
+        <if test='name != null and name != ""'>
+            AND name like concat('%',#{name},'%')
+        </if>
+        <if test='birthDate != null and birthDate != ""'>
+            AND DATE_FORMAT(birth_date,'%Y-%m-%d') = DATE_FORMAT(#{birthDate},'%Y-%m-%d')
+        </if>
+        <if test='phoneNumber != null and phoneNumber != ""'>
+            AND phone_number like concat('%',#{phoneNumber},'%')
+        </if>
+        <if test='email != null and email != ""'>
+            AND email like concat('%',#{email},'%')
+        </if>
+        LIMIT ${start}, ${length}
+    </select>
+
+    <select id="selectCompanyClientCount" resultType="int">
+        select
+        count(*)
+        from md_company_client
+        where 1=1
+        <if test='name != null and name != ""'>
+            AND name like concat('%',#{name},'%')
+        </if>
+        <if test='birthDate != null and birthDate != ""'>
+            AND DATE_FORMAT(birth_date,'%Y-%m-%d') = DATE_FORMAT(#{birthDate},'%Y-%m-%d')
+        </if>
+        <if test='phoneNumber != null and phoneNumber != ""'>
+            AND phone_number like concat('%',#{phoneNumber},'%')
+        </if>
+        <if test='email != null and email != ""'>
+            AND email like concat('%',#{email},'%')
+        </if>
+    </select>
+
+    <update id="updateCompanyClientDetail">
+        update md_company_client
+        set
+        name = #{name}
+        ,company_id = #{companyId}
+        ,birth_date = #{birthDate}
+        ,phone_number = #{phoneNumber}
+        ,email = #{email}
+        ,address = #{address}
+        ,rm = #{rm}
+        ,update_id = #{updateId}
+        ,update_date = now()
+        where cc_id = #{ccId}
+    </update>
+
+    <insert id="insertCompanyClientDetail">
+        <selectKey resultType="String" keyProperty="ccId" order="BEFORE">
+            SELECT IFNULL(CONCAT('cc',LPAD(MAX(SUBSTRING(cc_id,3,5))+1,5,'0')),'cc00001') from md_company_client
+        </selectKey>
+        insert into md_company_client
+        (
+        cc_id
+        ,company_id
+        ,name
+        ,birth_date
+        ,phone_number
+        ,email
+        ,address
+        ,rm
+        ,regist_id
+        ,regist_date
+        ,update_id
+        ,update_date
+        )values(
+        #{ccId}
+        ,#{companyId}
+        ,#{name}
+        ,#{birthDate}
+        ,#{phoneNumber}
+        ,#{email}
+        ,#{address}
+        ,#{rm}
+        ,#{registId}
+        ,now()
+        ,#{updateId}
+        ,now()
+        )
+    </insert>
+
+    <insert id="insertCompanyClientDetailList">
+        insert into md_company_client_detail
+        (
+        cc_id
+        ,seq
+        ,sale_type
+        ,trade_date
+        ,start_place
+        ,end_place
+        ,regist_id
+        ,regist_date
+        ,update_id
+        ,update_date
+        )values
+        <foreach item="item" collection="insertList" separator="," index="index">
+            (
+            #{ccId}
+            ,#{index}+1
+            ,#{item.saleType}
+            ,#{item.tradeDate}
+            ,#{item.startPlace}
+            ,#{item.endPlace}
+            ,#{registId}
+            ,now()
+            ,#{updateId}
+            ,now()
+            )
+        </foreach>
+
+    </insert>
+
+    <delete id="deleteCompanyClientDetailList">
+        delete from md_company_client_detail where cc_id = #{ccId}
+    </delete>
+
+    <select id="selectCompanyClientDetailList" resultType="resultMap">
+        select
+        sale_type
+        ,(select code_nm from cm_code where group_id = 'saleType' and code_id = sale_type) sale_type_name
+        ,DATE_FORMAT(trade_date,'%Y-%m-%d') as trade_date
+        ,start_place
+        ,end_place
+        from md_company_client_detail
+        where cc_id = #{ccId}
+    </select>
+
+    <select id="selectCompanyClientDetailCount" resultType="int">
+        select
+        count(*)
+        from md_company_client_detail
+        where cc_id = #{ccId}
+    </select>
+
+    <select id="selectCompanyClientDetail" resultType="companyClientVo">
+        select
+            cc_id
+            ,company_id
+            ,name
+            ,DATE_FORMAT(birth_date,'%Y-%m-%d') as birth_date
+            ,phone_number
+            ,email
+            ,address
+            ,rm
+        from md_company_client
+        where cc_id = #{ccId}
+    </select>
+</mapper>
+

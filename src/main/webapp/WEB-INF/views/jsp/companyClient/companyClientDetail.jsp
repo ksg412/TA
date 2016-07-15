@@ -6,11 +6,11 @@
 <head>
     <%@ include file="/WEB-INF/views/jsp/common/commonStyle.jsp"%>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>고객관리(일반)상세보기</title>
+    <title>고객관리(거래처)상세보기</title>
     <script type="text/javascript">
         $(document).ready(function() {
             /*콤보박스 생성*/
-            cmCodeSelectGenerator('saleType', 'saleType', 10, false,true,null);
+            cmCodeSelectGenerator('saleType', 'saleType', 10, false,true, null);
 
             /*날짜박스 생성*/
             datetimeGenerator('birthDate');
@@ -27,9 +27,9 @@
                     "url":"/resources/json/dataTable-korean.json"
                 }
                 ,"ajax": {
-                    "url":"/nomalClient/selectNomalClientDetailList"
+                    "url":"/companyClient/selectCompanyClientDetailList"
                     ,"data": function(d){
-                        d.ncId = $("#ncId").val();
+                        d.ccId = $("#ccId").val();
                     }
                 }
                 ,"ordering": false
@@ -59,8 +59,8 @@
                 buttons: {
                     "추가": addUser,
                     닫기: function() {
-                    dialog.dialog( "close" );
-                    dialogReset();
+                        dialog.dialog( "close" );
+                        dialogReset();
                     }
                 },
                 close: function() {
@@ -71,6 +71,16 @@
             form = dialog.find( "form" ).on( "submit", function( event ) {
                 event.preventDefault();
                 addUser();
+            });
+
+            /*거래처 combobox*/
+            $.ajax({
+                method: "POST",
+                url: "/company/selectCompanyComboList",
+                dataType: 'json'
+            })
+            .done(function( data ) {
+                selectGenerator(data, 'companyId', 100, true, true, "${companyClientVo.companyId}");
             });
         });
 
@@ -160,7 +170,7 @@
 
         /*목록으로 돌아가기*/
         function doList(){
-            location.replace("<c:url value='/nomalClient/selectNomalClientView'/>");
+            location.replace("<c:url value='/companyClient/selectCompanyClientView'/>");
         }
 
     </script>
@@ -168,19 +178,25 @@
 <body>
 
 <c:import url="/main/selectHeaderView.do"/>
-
 <div class="contentwrap">
-    ${companyVo.type}
     <article class="container bgc-white" >
         <div class="page-title">
-            <h2 class="page-title-h2">고객관리(일반) <small>상세보기</small></h2>
+            <h2 class="page-title-h2">고객관리(거래처) <small>상세보기</small></h2>
         </div>
         <div class="detail-page-form">
-            <c:url var="post_url"  value="/nomalClient/saveNomalClientDetail" />
-            <form:form commandName="nomalClientVo" data-toggle="validator" cssClass="form-horizontal" id="frm" ACTION="${post_url}" METHOD="POST">
+            <c:url var="post_url"  value="/companyClient/saveCompanyClientDetail" />
+            <form:form commandName="companyClientVo" data-toggle="validator" cssClass="form-horizontal" id="frm" ACTION="${post_url}" METHOD="POST">
                 <form:hidden path="viewType" />
-                <form:hidden path="ncId" />
+                <form:hidden path="ccId" />
                 <form:hidden path="tableData01" />
+
+                <div class="form-group">
+                    <label for="companyId" class="col-sm-2 control-label">거래처</label>
+                    <div class="col-sm-6">
+                        <form:select class="input-validation-error width100p" path="companyId" id="companyId" name="companyId" placeholder="거래처"></form:select>
+                        <form:errors path="companyId"  id="companyId" cssClass="errorMsg"/>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="name" class="col-sm-2 control-label">이름</label>
                     <div class="col-sm-6">

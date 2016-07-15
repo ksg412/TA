@@ -34,6 +34,20 @@ table.dataTable tbody tr.selected{
 .dialog-p{
     margin-bottom: 10px;
 }
+.page-title{
+    padding-bottom: 9px;
+    border-bottom: 2px solid #6c963a;
+}
+.page-title-h2{
+    margin:0px;
+}
+.detail-page-form{
+    margin-top:20px;
+}
+
+.dt-body-center{
+    text-align:center;
+}
 
 /*
 .bootstrap-select{

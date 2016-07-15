@@ -16,4 +16,5 @@ public interface CompanyDao {
     List selectCompanyList(Map commandMap) throws SQLException;
     int selectCompanyCount(Map commandMap) throws SQLException;
     CompanyVo selectCompanyDetail(String companyId) throws SQLException;
+    List selectCompanyComboList(Map commandMap) throws SQLException;
 }

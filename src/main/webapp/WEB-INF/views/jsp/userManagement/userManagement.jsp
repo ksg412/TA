@@ -65,6 +65,9 @@
 <c:import url="/main/selectHeaderView.do"/>
 
 <div class="container">
+    <div class="page-title">
+        <h2 class="page-title-h2">사용자관리 <small>정보검색</small></h2>
+    </div>
     <div class="col-xs-12 col-lg-12 search-box">
         <form class="form-inline" id="frm" ACTION="${post_url}" METHOD="POST">
             <div class="form-group search-item">

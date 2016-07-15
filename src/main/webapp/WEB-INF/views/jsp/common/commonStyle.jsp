@@ -4,7 +4,7 @@
 <!--<link rel="icon" href="resources/favicon.ico">-->
 
 <!--jqueryui css-->
-<link href="/resources/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
+<link href="/resources/jqueryui/jquery-ui-1.12.0/jquery-ui.css" rel="stylesheet">
 <!-- bootstrap 합쳐지고 최소화된 최신 CSS -->
 <link href="/resources/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="<c:url value='/resources/bootstrap/dist/css/bootstrap-theme.css'/>" rel="stylesheet">
@@ -31,8 +31,6 @@
 <!-- jquery 2.1.4버전 -->
 <script src="<c:url value='/resources/jquery/1.12.4/jquery-1.12.4.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/resources/jqueryform/2.8/jquery.form.js'/>" type="text/javascript"></script>
-<!--jqueryui js-->
-<script src="<c:url value='/resources/jquery-ui-1.11.4.custom/jquery-ui.js'/>" type="text/javascript"></script>
 <!-- 합쳐지고 최소화된 bootstrap 최신 자바스크립트 -->
 <script src="<c:url value='/resources/bootstrap/dist/js/bootstrap.min.js'/>"></script>
 <script src="/resources/bootstrap/select/js/bootstrap-select.js"></script>
@@ -40,8 +38,10 @@
 <script src="<c:url value='/resources/bootstrap/moment/moment.min.js'/>" type="text/javascript"></script>
 <script src="<c:url value='/resources/bootstrap/moment/moment-with-locales.min.js'/>" type="text/javascript"></script>
 <script src="/resources/bootstrap/datetimepicker/js/bootstrap-datetimepicker.js"></script>
-
-
+<!--jqueryui js jqueryui는 bootstrap js 이후에 와야함-->
+<script src="<c:url value='/resources/jqueryui/jquery-ui-1.12.0/jquery-ui.js'/>" type="text/javascript"></script>
+<!-- google chart -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <!--dataTable js 2개의 순서가 중요함.-->
 <script src="<c:url value='/resources/dataTable/jquery.dataTables.min.js'/>"></script>

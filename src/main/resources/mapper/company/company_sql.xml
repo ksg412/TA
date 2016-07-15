@@ -132,4 +132,11 @@
             ,rm = #{rm}
         where company_id = #{companyId}
     </update>
+
+    <select id="selectCompanyComboList" resultType="resultMap">
+        SELECT
+            company_id AS code_id
+            ,CONCAT('[',(SELECT code_nm FROM cm_code WHERE code_id = TYPE),']',NAME) AS code_nm
+        FROM MD_COMPANY
+    </select>
 </mapper>
